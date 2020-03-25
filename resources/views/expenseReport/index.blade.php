@@ -17,8 +17,8 @@
                     @foreach ($expenseReports as $sxpenseReport)
                     <tr>
                     <td>{{$sxpenseReport->title }}</td>
-                        <td></td>
-                        <td></td>
+                    <td><a href="/expense_reports/{{ $sxpenseReport->id }}/edit">Edit</a> </td>
+                    <td><a href="/expense_reports/{{ $sxpenseReport->id }}/confirmDelete">Delete</a></td>
                     </tr>
                     @endforeach
                 </table>   
