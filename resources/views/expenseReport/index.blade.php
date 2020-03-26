@@ -16,7 +16,8 @@
                 <table class="table">
                     @foreach ($expenseReports as $sxpenseReport)
                     <tr>
-                    <td>{{$sxpenseReport->title }}</td>
+                    {{-- <td>{{$sxpenseReport->title }}</td> --}}
+                    <td><a href="/expense_reports/{{ $sxpenseReport->id }}">{{$sxpenseReport->title }}</a> </td>
                     <td><a href="/expense_reports/{{ $sxpenseReport->id }}/edit">Edit</a> </td>
                     <td><a href="/expense_reports/{{ $sxpenseReport->id }}/confirmDelete">Delete</a></td>
                     </tr>
