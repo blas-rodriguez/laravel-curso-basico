@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>New Report</h1>
+            <h1>Send Report</h1>
         </div>
     </div>
         <div class="row">
@@ -23,16 +23,16 @@
                         </ul>
                     </div>
                 @endif
-                  <form action="/expense_reports/" method="POST">
+                <form action="/expense_reports/{{ $report->id}}/sendMail" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="title">Title:</label>
-                    <input type="text" placeholder="Title" name="title" value="{{ old('title')}}" id="title" class="form-control">
+                        <label for="email">email:</label>
+                    <input type="text" placeholder="email" name="email" value="{{ old('email')}}" id="email" class="form-control">
 
                     </div>
-                    <button class="btn btn-primary" type="submit">Enviar</button>
+                    <button class="btn btn-primary" type="submit">Send Mail</button>
                   </form>
             </div>
         </div>         
-    </div>
+    </div>  
 @endsection

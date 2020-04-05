@@ -1,12 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+#Para  ExpenseReportController.php
+use App\Mail\SummaryReport;
+use Illuminate\Support\Facades\Mail;
+
+
+
 use App\ExpenseReport;
 
 use Illuminate\Http\Request;
 
 class ExpenseReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -114,5 +124,20 @@ class ExpenseReportController extends Controller
         return View('expenseReport.confirmDelete',[
             'report' => $report
         ]);
+    }
+
+    public function confirmSendMail($id)
+    {
+        $report = ExpenseReport::findOrFail($id);
+        return View('expenseReport.confirmSendMail',[
+            'report' => $report
+        ]);
+    }
+
+    public function sendMail($id,Request $request)
+    {
+        $report = ExpenseReport::findOrFail($id);
+        Mail::to($request->get('email'))->send(new SummaryReport($report));
+        return redirect('/expense_reports/'. $id);
     }
 }

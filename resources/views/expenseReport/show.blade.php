@@ -1,6 +1,7 @@
-@extends('layouts.base')
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
     <div class="row">
         <div class="col">
         <h1> Report {{ $report->id}}</h1>
@@ -9,6 +10,11 @@
         <div class="row">
             <div class="col">
                 <a class="btn btn-secondary" href="/expense_reports">Back</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <a class="btn btn-primary" href="/expense_reports/{{ $report->id}}/confirmSendMail">Send Mail</a>
             </div>
         </div>
         <div class="row">
@@ -25,6 +31,12 @@
                 @endforeach
               </table>
             </div>
-        </div>         
+        </div>   
+        <div class="row">  
+            <div class="col">
+                <a class="btn btn-primary" href="/expense_reports/{{ $report->id}}/expenses/create">New Expense</a>
+            </div>     
+    </div>    
+    </div>
     
 @endsection

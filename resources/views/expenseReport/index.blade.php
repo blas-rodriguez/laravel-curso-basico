@@ -1,9 +1,12 @@
-@extends('layouts.base')
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
     <div class="row">
         <div class="col">
-            <h1>Report</h1>
+         @foreach ($users as $user)
+            <h1>Report from {{ $user->name }}</h1>
+         @endforeach
         </div>
     </div>
         <div class="row">
@@ -25,5 +28,5 @@
                 </table>   
             </div>
         </div>         
-    
+    </div>
 @endsection
